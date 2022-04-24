@@ -3,9 +3,10 @@ import argparse
 from caesar_cipher import cipher
 
 
+# TODO consider refactoring main() it's too big
 def main():
     args = parse_args()
-    print(args)
+    # print(args)
     # Namespace(
     # encode=False, decode=True,
     # file= < _io.TextIOWrapper name = 'sample.txt' mode = 'r' encoding = 'UTF-8' >,
@@ -33,7 +34,7 @@ def main():
         args.decode = direction == "d"
 
     # Check that there is some input
-    if not args.file or not args.text:
+    if not args.file and not args.text:
         # Ask if input is from a file or direct input typed in the console
         while True:
             read_from_file = input("Use a .txt file as input? yes/no ").lower()
@@ -64,6 +65,7 @@ def main():
                 break
         args.shift = shift
 
+    # TODO consider for this case adding an option to print result to the console additionally to the file
     if args.file:
         direction = "e" if args.encode else "d"
         if not args.output:
@@ -71,7 +73,8 @@ def main():
         with args.file as reader, args.output as writer:
             for line in reader:
                 writer.write(cipher(line, args.shift, direction))
-        print(args.output.closed)
+
+    # TODO handle direct user input in the console args.text
 
 
 def parse_args():
