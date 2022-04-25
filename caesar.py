@@ -5,13 +5,6 @@ from caesar_cipher import cipher
 
 def main():
     args = parse_args()
-    # print(args.file.name)
-    # Namespace(
-    # encode=False, decode=True,
-    # file= < _io.TextIOWrapper name = 'sample.txt' mode = 'r' encoding = 'UTF-8' >,
-    # text = None,
-    # key = 2,
-    # outfile = None)
 
     # Check that a direction is given
     if not args.encode and not args.decode:
@@ -149,8 +142,6 @@ def parse_args():
 
     args = parser.parse_args()
     return args
-
-    # TODO Improve cipher with the option of multiple ciphers
 
 
 if __name__ == "__main__":
